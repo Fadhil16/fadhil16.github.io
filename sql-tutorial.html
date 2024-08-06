@@ -7,6 +7,7 @@
 	<title>Pembelajaran SQL</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
+<body>
 <section>
 	<nav>
 		<a href="home.html" class="logo">Spike.id</a>
@@ -23,96 +24,96 @@
 	</nav>
 </section>
 	
-	<article>
-		<div class="konten">
-        	<div class="kotak">
-		        <img src="gambar/sql.jpg"  width="450" height="250" alt="SQL">
-		        <h2>Pengenalan SQL dan SQL Server</h2>
-		        <p class="tulisan_justify">
-			        <strong>Apa itu SQL?</strong>
-			        <br>
-			        Structured Query Language (SQL) adalah bahasa standar yang digunakan untuk mengelola dan memanipulasi basis data relasional. Dengan SQL, kita bisa melakukan berbagai operasi seperti menyimpan, memperbarui, menghapus, dan mengambil data dari basis data.
-		        </p>
+<article>
+	<div class="konten">
+    	<div class="kotak">
+	        <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png"  width="450" height="250" alt="SQL">
+	        <h2>Pengenalan SQL dan SQL Server</h2>
+	        <p class="tulisan_justify">
+		        <strong>Apa itu SQL?</strong>
+		        <br>
+		        Structured Query Language (SQL) adalah bahasa standar yang digunakan untuk mengelola dan memanipulasi basis data relasional. Dengan SQL, kita bisa melakukan berbagai operasi seperti menyimpan, memperbarui, menghapus, dan mengambil data dari basis data.
+	        </p>
 
-		        <p class="tulisan_justify">
-			        <strong>Apa itu SQL Server?</strong>
-			        <br>
-			        SQL Server adalah sistem manajemen basis data relasional (RDBMS) yang dikembangkan oleh Microsoft. SQL Server memungkinkan pengguna untuk menyimpan dan mengambil data sebagaimana diminta oleh aplikasi perangkat lunak lainnya, baik yang berjalan di komputer yang sama atau di komputer lain di jaringan (termasuk internet).
-		        </p>
+	        <p class="tulisan_justify">
+		        <strong>Apa itu SQL Server?</strong>
+		        <br>
+		        SQL Server adalah sistem manajemen basis data relasional (RDBMS) yang dikembangkan oleh Microsoft. SQL Server memungkinkan pengguna untuk menyimpan dan mengambil data sebagaimana diminta oleh aplikasi perangkat lunak lainnya, baik yang berjalan di komputer yang sama atau di komputer lain di jaringan (termasuk internet).
+	        </p>
 
-		        <p class="tulisan_justify">
-			        <strong>Dasar-Dasar SQL Syntax</strong>
-			        <br>
-			        SQL memiliki sejumlah perintah dasar yang digunakan untuk melakukan operasi pada data. Berikut ini adalah beberapa perintah dasar dalam SQL beserta penjelasannya:
-		        </p>
+	        <p class="tulisan_justify">
+		        <strong>Dasar-Dasar SQL Syntax</strong>
+		        <br>
+		        SQL memiliki sejumlah perintah dasar yang digunakan untuk melakukan operasi pada data. Berikut ini adalah beberapa perintah dasar dalam SQL beserta penjelasannya:
+	        </p>
 
-		        <p class="tulisan_justify">
-			        <strong>SELECT</strong>
-			        <br>
-			        Perintah SELECT digunakan untuk mengambil data dari basis data. Hasilnya disimpan dalam bentuk tabel hasil.
-			        <pre>
+	        <p class="tulisan_justify">
+		        <strong>SELECT</strong>
+		        <br>
+		        Perintah SELECT digunakan untuk mengambil data dari basis data. Hasilnya disimpan dalam bentuk tabel hasil.
+		        <pre>
 SELECT column1, column2, ...
 FROM table_name;
-			        </pre>
-			        Contoh:
-			        <pre>
+		        </pre>
+		        Contoh:
+		        <pre>
 SELECT FirstName, LastName
 FROM Employees;
-			        </pre>
-		        </p>
+		        </pre>
+	        </p>
 
-		        <p class="tulisan_justify">
-			        <strong>INSERT INTO</strong>
-			        <br>
-			        Perintah INSERT INTO digunakan untuk menambahkan baris baru ke dalam tabel.
-			        <pre>
+	        <p class="tulisan_justify">
+		        <strong>INSERT INTO</strong>
+		        <br>
+		        Perintah INSERT INTO digunakan untuk menambahkan baris baru ke dalam tabel.
+		        <pre>
 INSERT INTO table_name (column1, column2, ...)
 VALUES (value1, value2, ...);
-			        </pre>
-			        Contoh:
-			        <pre>
+		        </pre>
+		        Contoh:
+		        <pre>
 INSERT INTO Employees (FirstName, LastName, Age)
 VALUES ('John', 'Doe', 30);
-			        </pre>
-		        </p>
+		        </pre>
+	        </p>
 
-		        <p class="tulisan_justify">
-			        <strong>UPDATE</strong>
-			        <br>
-			        Perintah UPDATE digunakan untuk memperbarui data yang sudah ada di dalam tabel.
-			        <pre>
+	        <p class="tulisan_justify">
+		        <strong>UPDATE</strong>
+		        <br>
+		        Perintah UPDATE digunakan untuk memperbarui data yang sudah ada di dalam tabel.
+		        <pre>
 UPDATE table_name
 SET column1 = value1, column2 = value2, ...
 WHERE condition;
-			        </pre>
-			        Contoh:
-			        <pre>
+		        </pre>
+		        Contoh:
+		        <pre>
 UPDATE Employees
 SET Age = 31
 WHERE FirstName = 'John' AND LastName = 'Doe';
-			        </pre>
-		        </p>
+		        </pre>
+	        </p>
 
-		        <p class="tulisan_justify">
-			        <strong>DELETE</strong>
-			        <br>
-			        Perintah DELETE digunakan untuk menghapus baris dari tabel.
-			        <pre>
+	        <p class="tulisan_justify">
+		        <strong>DELETE</strong>
+		        <br>
+		        Perintah DELETE digunakan untuk menghapus baris dari tabel.
+		        <pre>
 DELETE FROM table_name
 WHERE condition;
-			        </pre>
-			        Contoh:
-			        <pre>
+		        </pre>
+		        Contoh:
+		        <pre>
 DELETE FROM Employees
 WHERE FirstName = 'John' AND LastName = 'Doe';
-			        </pre>
-		        </p>
+		        </pre>
+	        </p>
 
-		        <p class="tulisan_justify">
-			        <strong>Struktur Tabel dalam SQL Server</strong>
-			        <br>
-			        Sebuah tabel dalam SQL Server terdiri dari kolom (columns) dan baris (rows). Kolom merepresentasikan atribut data, sedangkan baris merepresentasikan record data.
-			        <pre>
+	        <p class="tulisan_justify">
+		        <strong>Struktur Tabel dalam SQL Server</strong>
+		        <br>
+		        Sebuah tabel dalam SQL Server terdiri dari kolom (columns) dan baris (rows). Kolom merepresentasikan atribut data, sedangkan baris merepresentasikan record data.
+		        <pre>
 CREATE TABLE Employees (
     EmployeeID int,
     FirstName varchar(255),
@@ -120,14 +121,14 @@ CREATE TABLE Employees (
     Age int,
     Department varchar(255)
 );
-			        </pre>
-		        </p>
+		        </pre>
+	        </p>
 
-		        <p class="tulisan_justify">
-			        <strong>Kunci Primer dan Kunci Asing</strong>
-			        <br>
-			        <strong>Primary Key:</strong> Digunakan untuk mengidentifikasi setiap baris data secara unik dalam tabel. Setiap tabel harus memiliki satu kunci primer.
-			        <pre>
+	        <p class="tulisan_justify">
+		        <strong>Kunci Primer dan Kunci Asing</strong>
+		        <br>
+		        <strong>Primary Key:</strong> Digunakan untuk mengidentifikasi setiap baris data secara unik dalam tabel. Setiap tabel harus memiliki satu kunci primer.
+		        <pre>
 CREATE TABLE Employees (
     EmployeeID int PRIMARY KEY,
     FirstName varchar(255),
@@ -135,29 +136,29 @@ CREATE TABLE Employees (
     Age int,
     Department varchar(255)
 );
-			        </pre>
-			        <strong>Foreign Key:</strong> Digunakan untuk mengaitkan dua tabel. Kunci asing di satu tabel merujuk ke kunci primer di tabel lain.
-			        <pre>
+		        </pre>
+		        <strong>Foreign Key:</strong> Digunakan untuk mengaitkan dua tabel. Kunci asing di satu tabel merujuk ke kunci primer di tabel lain.
+		        <pre>
 CREATE TABLE Orders (
     OrderID int PRIMARY KEY,
     OrderDate date,
     EmployeeID int,
     FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
 );
-			        </pre>
-		        </p>
+		        </pre>
+	        </p>
 
-		        <p class="tulisan_justify">
-			        <strong>Kesimpulan</strong>
-			        <br>
-			        SQL adalah alat yang sangat kuat untuk mengelola dan memanipulasi data dalam basis data relasional. SQL Server sebagai salah satu RDBMS yang populer, menyediakan berbagai fitur yang mendukung operasi data yang efisien dan efektif. Memahami dasar-dasar syntax SQL adalah langkah pertama yang penting dalam menguasai pengelolaan basis data.
-		        </p>
-	        </div>
+	        <p class="tulisan_justify">
+		        <strong>Kesimpulan</strong>
+		        <br>
+		        SQL adalah alat yang sangat kuat untuk mengelola dan memanipulasi data dalam basis data relasional. SQL Server sebagai salah satu RDBMS yang populer, menyediakan berbagai fitur yang mendukung operasi data yang efisien dan efektif. Memahami dasar-dasar syntax SQL adalah langkah pertama yang penting dalam menguasai pengelolaan basis data.
+	        </p>
         </div>
-	</article>
+    </div>
+</article>
 
-	<footer>
-        	&copy 2021-fadhil.com
-    </footer>
+<footer>
+	&copy 2021
+</footer>
 </body>
 </html>
