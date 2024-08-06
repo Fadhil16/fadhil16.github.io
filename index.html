@@ -4,14 +4,13 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Game Review</title>
+	<title>Pembelajaran SQL</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
-
 <body>
-	<section>
-		<nav>
-			<a href="home.html" class="logo">Spike.id</a>
+<section>
+	<nav>
+		<a href="home.html" class="logo">Spike.id</a>
 			<ul>
 				<li><a href="/" class="active">Beranda</a>|</li>
 				<li class="dropdown"><a href="#">Game</a>
@@ -22,37 +21,268 @@
 				</li>
                 <li><a href="sql-tutorial.html">Pembelajaran SQL</a></li>
 			</ul>
-		</nav>
+	</nav>
+</section>
+	
+<article>
+	<div class="konten">
+    	<div class="kotak">
+	        <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png"  width="450" height="250" alt="SQL">
+	        <h2>Pengenalan SQL dan SQL Server</h2>
+	        <p class="tulisan_justify">
+		        <strong>Apa itu SQL?</strong>
+		        <br>
+		        Structured Query Language (SQL) adalah bahasa standar yang digunakan untuk mengelola dan memanipulasi basis data relasional. Dengan SQL, kita bisa melakukan berbagai operasi seperti menyimpan, memperbarui, menghapus, dan mengambil data dari basis data.
+	        </p>
 
-		<article>
-			<div class="konten">
-				<div class="kotak">
-				<h1>Valorant Review</h1>
-				<a href="valorant.html" ><img src="gambar/valo.jpg" width="250" height="200" alt="valorant"></a>
-				 <p>Mengenal Valorant, Game FPS yang Tengah Hype</p>
-				</div>
-        	</div>
+	        <p class="tulisan_justify">
+		        <strong>Apa itu SQL Server?</strong>
+		        <br>
+		        SQL Server adalah sistem manajemen basis data relasional (RDBMS) yang dikembangkan oleh Microsoft. SQL Server memungkinkan pengguna untuk menyimpan dan mengambil data sebagaimana diminta oleh aplikasi perangkat lunak lainnya, baik yang berjalan di komputer yang sama atau di komputer lain di jaringan (termasuk internet).
+	        </p>
 
-        	<div class="konten">
-        		<div class="kotak">
-        		<h1>Among Us Review</h1>
-        		<a href="among.html"><img src="gambar/among.jpg" width="250" height="200" alt="Among US"></a>
-        		<p>Game Co-op yang melibatkan kita mencari penghianat diantara pemain</p>
-        		</div>
-       		 </div>
+	        <p class="tulisan_justify">
+		        <strong>Dasar-Dasar SQL Syntax</strong>
+		        <br>
+		        SQL memiliki sejumlah perintah dasar yang digunakan untuk melakukan operasi pada data. Berikut ini adalah beberapa perintah dasar dalam SQL beserta penjelasannya:
+	        </p>
 
-            <div class="konten">
-                <div class="kotak">
-                <h1>Pembelajaran Query SQL</h1>
-                <a href="sql-tutorial.html"><img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png" width="250" height="200" alt="SQL"></a>
-                <p>Pelajari dasar-dasar dan contoh query SQL untuk mengelola basis data.</p>
-                </div>
-            </div>
-        </article>
-        <footer>
-        	&copy 2021-fadhil.com
-        </footer>
+	        <p class="tulisan_justify">
+		        <strong>SELECT</strong>
+		        <br>
+		        Perintah SELECT digunakan untuk mengambil data dari basis data. Hasilnya disimpan dalam bentuk tabel hasil.
+		        <pre>
+SELECT column1, column2, ...
+FROM table_name;
+		        </pre>
+		        Contoh:
+		        <pre>
+SELECT FirstName, LastName
+FROM Employees;
+		        </pre>
+	        </p>
 
-    </section>
+	        <p class="tulisan_justify">
+		        <strong>INSERT INTO</strong>
+		        <br>
+		        Perintah INSERT INTO digunakan untuk menambahkan baris baru ke dalam tabel.
+		        <pre>
+INSERT INTO table_name (column1, column2, ...)
+VALUES (value1, value2, ...);
+		        </pre>
+		        Contoh:
+		        <pre>
+INSERT INTO Employees (FirstName, LastName, Age)
+VALUES ('John', 'Doe', 30);
+		        </pre>
+	        </p>
+
+	        <p class="tulisan_justify">
+		        <strong>UPDATE</strong>
+		        <br>
+		        Perintah UPDATE digunakan untuk memperbarui data yang sudah ada di dalam tabel.
+		        <pre>
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+		        </pre>
+		        Contoh:
+		        <pre>
+UPDATE Employees
+SET Age = 31
+WHERE FirstName = 'John' AND LastName = 'Doe';
+		        </pre>
+	        </p>
+
+	        <p class="tulisan_justify">
+		        <strong>DELETE</strong>
+		        <br>
+		        Perintah DELETE digunakan untuk menghapus baris dari tabel.
+		        <pre>
+DELETE FROM table_name
+WHERE condition;
+		        </pre>
+		        Contoh:
+		        <pre>
+DELETE FROM Employees
+WHERE FirstName = 'John' AND LastName = 'Doe';
+		        </pre>
+	        </p>
+
+	        <p class="tulisan_justify">
+		        <strong>Struktur Tabel dalam SQL Server</strong>
+		        <br>
+		        Sebuah tabel dalam SQL Server terdiri dari kolom (columns) dan baris (rows). Kolom merepresentasikan atribut data, sedangkan baris merepresentasikan record data.
+		        <pre>
+CREATE TABLE Employees (
+    EmployeeID int,
+    FirstName varchar(255),
+    LastName varchar(255),
+    Age int,
+    Department varchar(255)
+);
+		        </pre>
+	        </p>
+
+	        <p class="tulisan_justify">
+		        <strong>Kunci Primer dan Kunci Asing</strong>
+		        <br>
+		        <strong>Primary Key:</strong> Digunakan untuk mengidentifikasi setiap baris data secara unik dalam tabel. Setiap tabel harus memiliki satu kunci primer.
+		        <pre>
+CREATE TABLE Employees (
+    EmployeeID int PRIMARY KEY,
+    FirstName varchar(255),
+    LastName varchar(255),
+    Age int,
+    Department varchar(255)
+);
+		        </pre>
+		        <strong>Foreign Key:</strong> Digunakan untuk mengaitkan dua tabel. Kunci asing di satu tabel merujuk ke kunci primer di tabel lain.
+		        <pre>
+CREATE TABLE Orders (
+    OrderID int PRIMARY KEY,
+    OrderDate date,
+    EmployeeID int,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
+		        </pre>
+	        </p>
+
+	        <p class="tulisan_justify">
+		        <strong>Kesimpulan</strong>
+		        <br>
+		        SQL adalah alat yang sangat kuat untuk mengelola dan memanipulasi data dalam basis data relasional. SQL Server sebagai salah satu RDBMS yang populer, menyediakan berbagai fitur yang mendukung operasi data yang efisien dan efektif. Memahami dasar-dasar syntax SQL adalah langkah pertama yang penting dalam menguasai pengelolaan basis data.
+	        </p>
+			
+			<h2>Contoh Pembelajaran Query SQL</h2>
+			<pre>
+CREATE DATABASE dbElektronik;
+GO
+
+USE dbElektronik;
+
+CREATE TABLE pelanggan (
+	id_pelanggan Int IDENTITY(1001,1) NOT NULL PRIMARY KEY,
+	nm_pelanggan CHAR(35) NOT NULL,
+	alamat VARCHAR(50) NOT NULL,
+	email VARCHAR(35) NOT NULL,
+	no_telp VARCHAR(15) NOT NULL
+);
+
+CREATE TABLE barang (
+	id_barang Int IDENTITY(2001,1) NOT NULL PRIMARY KEY,
+	nm_barang CHAR(35) NOT NULL,
+	kategori VARCHAR(20) NOT NULL,
+	harga Int NOT NULL,
+	stok Int NOT NULL,
+	status CHAR(15) NOT NULL CHECK(status = 'tersedia' OR status = 'tidak tersedia') 
+);
+
+CREATE TABLE pesanan (
+	id_pesanan Int IDENTITY(3001,1) NOT NULL PRIMARY KEY,
+	tgl_pesanan DATE NOT NULL,
+	jml_pesanan Int NOT NULL,
+	ttl_bayar Int NULL,
+	sts_pesanan CHAR(15) NOT NULL,
+	sts_pembayaran CHAR(15) NOT NULL,
+	sts_pengiriman CHAR(15) NOT NULL,
+	id_pelanggan Int NOT NULL FOREIGN KEY REFERENCES pelanggan(id_pelanggan),
+	id_barang Int NOT NULL FOREIGN KEY REFERENCES barang(id_barang)
+);
+
+SELECT * FROM pelanggan;
+
+INSERT INTO pelanggan 
+VALUES
+('lipi','jl. mato merah','lipi@gmail.com','081234567890'),
+('fadhil','jl. madukara','fadhil@gmail.com','081245678901'),
+('kelvin','jl. opi','kelvin@gmail.com','081212345678'),
+('azril','jl. km12','azril@gmail.com','081223456789'),
+('naufal','jl. nakula','naufal@gmail.com','081211122233');
+
+SELECT * FROM barang;
+
+INSERT INTO barang 
+VALUES
+('tv','elektronik',1200000,10,'tersedia'),
+('ac','elektronik',1800000,20,'tersedia'),
+('kipas angin','elektronik',200000,0,'tidak tersedia'),
+('mesin cuci','elektronik',800000,5,'tersedia'),
+('kulkas','elektronik',1400000,15,'tersedia');
+
+INSERT INTO barang 
+VALUES
+('kompor','non elektronik',100000,12,'tersedia');
+
+SELECT * FROM pesanan;
+
+INSERT INTO pesanan
+VALUES
+('12-12-2023',3,NULL,'diproses','dibayar','dikirim',1001,2001),
+('02-13-2024',2,NULL,'diproses','dibayar','dikirim',1002,2002),
+('10-13-2023',5,NULL,'diproses','dibayar','dikirim',1003,2003),
+('01-14-2024',6,NULL,'ditolak','tidak bayar','dibatalkan',1004,2004),
+('04-20-2024',5,NULL,'ditolak','tidak bayar','dibatalkan',1005,2005);
+
+INSERT INTO pesanan
+VALUES
+('12-12-2023',3,NULL,'diproses','dibayar','dikirim',1001,2001);
+
+-- a
+SELECT * FROM barang WHERE kategori = 'elektronik';
+SELECT * FROM barang WHERE kategori = 'non elektronik';
+
+-- b
+SELECT pelanggan.id_pelanggan, pelanggan.nm_pelanggan, barang.id_barang, barang.nm_barang, barang.harga, pesanan.jml_pesanan, barang.harga * pesanan.jml_pesanan AS Total_Harga
+FROM pesanan
+INNER JOIN pelanggan ON pelanggan.id_pelanggan = pesanan.id_pesanan
+INNER JOIN barang ON barang.id_barang = pesanan.id_pesanan;
+
+SELECT pelanggan.id_pelanggan, pelanggan.nm_pelanggan, barang.id_barang, barang.nm_barang, barang.harga, pesanan.jml_pesanan, barang.harga * pesanan.jml_pesanan AS Total_Harga
+FROM pesanan
+INNER JOIN pelanggan ON pesanan.id_pelanggan = pelanggan.id_pelanggan
+INNER JOIN barang ON pesanan.id_barang = barang.id_barang;
+
+CREATE VIEW vwLaporanPenjualan AS
+SELECT pelanggan.id_pelanggan, pelanggan.nm_pelanggan, barang.id_barang, barang.nm_barang, barang.harga, pesanan.jml_pesanan, barang.harga * pesanan.jml_pesanan AS Total_Harga
+FROM pesanan
+INNER JOIN pelanggan ON pesanan.id_pelanggan = pelanggan.id_pelanggan
+INNER JOIN barang ON pesanan.id_barang = barang.id_barang;
+
+SELECT * FROM vwLaporanPenjualan;
+
+CREATE PROCEDURE sp_TampilBarang @id_barang INT 
+AS
+SELECT barang.nm_barang, barang.harga, barang.stok
+FROM barang
+WHERE id_barang = @id_barang;
+
+EXEC sp_TampilBarang @id_barang = 2001;
+
+CREATE TRIGGER tr_UpdateStatusBarang
+BEFORE INSERT ON barang
+FOR EACH ROW
+BEGIN
+  IF EXISTS (SELECT stok 
+             FROM barang
+             WHERE NEW.stok = barang.stok) 
+  AND (SELECT stock
+       FROM book
+       WHERE NEW.bno = book.bno) > 0
+  THEN UPDATE book
+       SET stock = stock-1
+       WHERE NEW.bno = book.bno;
+  ELSE SIGNAL SQLSTATE '45000'
+       SET MESSAGE_TEXT = 'Book doesn\'t exist or out of stock';
+  END IF;
+END;
+			</pre>
+        </div>
+    </div>
+</article>
+
+<footer>
+	&copy 2021
+</footer>
 </body>
 </html>
