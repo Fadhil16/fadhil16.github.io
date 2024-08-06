@@ -1,58 +1,169 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Game Review</title>
-	<link rel="stylesheet" type="text/css" href="style.css"/>
+    <title>Pembelajaran SQL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77d1f5 3px solid;
+        }
+        header a, footer a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        .main {
+            padding: 20px;
+            background: #fff;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+            display: block;
+            margin: 10px 0;
+        }
+        .sql-code {
+            background: #f9f9f9;
+            border-left: 4px solid #77d1f5;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
 </head>
-
 <body>
-	<section>
-		<nav>
-			<a href="home.html" class="logo">Spike.id</a>
-			<ul>
-				<li><a href="/" class="active">Beranda</a>|</li>
-				<li class="dropdown"><a href="#">Game</a>
-					<ul class="isi-dropdown">
-					<li><a href="valorant.html">Pc Game</a></li>
-					<li><a href="among.html">Mobile Games</a></li>
-					</ul>
-				</li>
-                <li><a href="sql-tutorial.html">Pembelajaran SQL</a></li>
-			</ul>
-		</nav>
+    <header>
+        <div class="container">
+            <h1>Pembelajaran SQL</h1>
+        </div>
+    </header>
 
-		<article>
-			<div class="konten">
-				<div class="kotak">
-				<h1>Valorant Review</h1>
-				<a href="valorant.html" ><img src="gambar/valo.jpg" width="250" height="200" alt="valorant"></a>
-				 <p>Mengenal Valorant, Game FPS yang Tengah Hype</p>
-				</div>
-        	</div>
+    <div class="container main">
+        <h2>Query Dasar</h2>
+        <p>Query berikut digunakan untuk menampilkan semua barang berdasarkan kategori:</p>
+        <div class="sql-code">
+            <code>
+                SELECT * FROM barang WHERE kategori = 'elektronik';<br>
+                SELECT * FROM barang WHERE kategori = 'non elektronik';
+            </code>
+        </div>
 
-        	<div class="konten">
-        		<div class="kotak">
-        		<h1>Among Us Review</h1>
-        		<a href="among.html"><img src="gambar/among.jpg" width="250" height="200" alt="Among US"></a>
-        		<p>Game Co-op yang melibatkan kita mencari penghianat diantara pemain</p>
-        		</div>
-       		 </div>
+        <h2>Join dan Menghitung Total Harga</h2>
+        <p>Query berikut digunakan untuk menampilkan detail pesanan beserta total harga:</p>
+        <div class="sql-code">
+            <code>
+                SELECT pelanggan.id_pelanggan, pelanggan.nm_pelanggan, barang.id_barang, barang.nm_barang, barang.harga, pesanan.jml_pesanan, barang.harga * pesanan.jml_pesanan as Total_Harga<br>
+                FROM pesanan<br>
+                INNER JOIN pelanggan ON pesanan.id_pelanggan = pelanggan.id_pelanggan<br>
+                INNER JOIN barang ON pesanan.id_barang = barang.id_barang;
+            </code>
+        </div>
 
-            <div class="konten">
-                <div class="kotak">
-                <h1>Pembelajaran Query SQL</h1>
-                <a href="sql-tutorial.html"><img src="gambar/sql.jpg" width="250" height="200" alt="SQL"></a>
-                <p>Pelajari dasar-dasar dan contoh query SQL untuk mengelola basis data.</p>
-                </div>
-            </div>
-        </article>
-        <footer>
-        	&copy 2021-fadhil.com
-        </footer>
+        <h2>Membuat View</h2>
+        <p>Query berikut digunakan untuk membuat view laporan penjualan:</p>
+        <div class="sql-code">
+            <code>
+                CREATE VIEW vwLaporanPenjualan AS<br>
+                SELECT pelanggan.id_pelanggan, pelanggan.nm_pelanggan, barang.id_barang, barang.nm_barang, barang.harga, pesanan.jml_pesanan, barang.harga * pesanan.jml_pesanan as Total_Harga<br>
+                FROM pesanan<br>
+                INNER JOIN pelanggan ON pesanan.id_pelanggan = pelanggan.id_pelanggan<br>
+                INNER JOIN barang ON pesanan.id_barang = barang.id_barang;
+            </code>
+        </div>
+        <p>Untuk menampilkan data dari view:</p>
+        <div class="sql-code">
+            <code>
+                SELECT * FROM vwLaporanPenjualan;
+            </code>
+        </div>
 
-    </section>
+        <h2>Membuat Stored Procedure</h2>
+        <p>Query berikut digunakan untuk membuat stored procedure yang menampilkan detail barang berdasarkan ID:</p>
+        <div class="sql-code">
+            <code>
+                CREATE PROCEDURE sp_TampilBarang @id_barang INT AS<br>
+                SELECT nm_barang, harga, stok FROM barang<br>
+                WHERE id_barang = @id_barang;<br>
+                <br>
+                EXEC sp_TampilBarang @id_barang = 2001;
+            </code>
+        </div>
+
+        <h2>Membuat Fungsi</h2>
+        <p>Query berikut digunakan untuk membuat fungsi yang menghitung total harga:</p>
+        <div class="sql-code">
+            <code>
+                CREATE FUNCTION fn_HitungTotalHarga (@id_barang INT, @jumlah INT)<br>
+                RETURNS INT<br>
+                AS<br>
+                BEGIN<br>
+                    DECLARE @harga INT;<br>
+                    <br>
+                    SELECT @harga = harga FROM barang<br>
+                    WHERE id_barang = @id_barang;<br>
+                    <br>
+                    RETURN @harga * @jumlah;<br>
+                END;<br>
+                <br>
+                SELECT dbo.fn_HitungTotalHarga(2001, 4);
+            </code>
+        </div>
+
+        <h2>Membuat Trigger</h2>
+        <p>Query berikut digunakan untuk membuat trigger yang mengupdate status barang setelah ada pesanan:</p>
+        <div class="sql-code">
+            <code>
+                CREATE TRIGGER tr_UpdateStatusBarang<br>
+                ON pesanan<br>
+                AFTER INSERT<br>
+                AS<br>
+                BEGIN<br>
+                    UPDATE barang<br>
+                    SET barang.stok = barang.stok - inserted.jml_pesanan<br>
+                    FROM barang<br>
+                    INNER JOIN inserted ON barang.id_barang = inserted.id_barang;<br>
+                    <br>
+                    UPDATE barang<br>
+                    SET barang.status = 'tidak tersedia'<br>
+                    WHERE barang.stok <= 0;<br>
+                END;<br>
+                <br>
+                INSERT INTO pesanan VALUES('03-12-2024', 7, 71200000, 'diproses', 'dibayar', 'dikirim', 1001, 2001);<br>
+                INSERT INTO pesanan VALUES('04-12-2024', 3, 31200000, 'diproses', 'dibayar', 'dikirim', 1001, 2001);
+            </code>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Pembelajaran SQL. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
