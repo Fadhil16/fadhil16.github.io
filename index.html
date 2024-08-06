@@ -84,6 +84,7 @@
                 INNER JOIN barang ON pesanan.id_barang = barang.id_barang;
             </code>
         </div>
+        <p><strong>Penjelasan:</strong> Query ini menggunakan <code>INNER JOIN</code> untuk menggabungkan data dari tabel <code>pelanggan</code> dan <code>barang</code> berdasarkan tabel <code>pesanan</code>. Ini memungkinkan kita untuk melihat detail lengkap dari setiap pesanan, termasuk informasi pelanggan dan barang yang dipesan, serta menghitung total harga dari pesanan tersebut.</p>
 
         <h2>Membuat View</h2>
         <p>Query berikut digunakan untuk membuat view laporan penjualan:</p>
@@ -96,6 +97,7 @@
                 INNER JOIN barang ON pesanan.id_barang = barang.id_barang;
             </code>
         </div>
+        <p><strong>Penjelasan:</strong> View <code>vwLaporanPenjualan</code> dibuat untuk menyimpan query yang kompleks agar lebih mudah diakses dan digunakan kembali. Dengan membuat view ini, kita dapat menampilkan data laporan penjualan dengan mudah menggunakan <code>SELECT * FROM vwLaporanPenjualan</code>.</p>
         <p>Untuk menampilkan data dari view:</p>
         <div class="sql-code">
             <code>
@@ -114,6 +116,7 @@
                 EXEC sp_TampilBarang @id_barang = 2001;
             </code>
         </div>
+        <p><strong>Penjelasan:</strong> Stored procedure <code>sp_TampilBarang</code> dibuat untuk menampilkan detail barang berdasarkan parameter <code>@id_barang</code>. Parameter ini memungkinkan kita untuk menyesuaikan query dengan ID barang yang berbeda setiap kali stored procedure dijalankan.</p>
 
         <h2>Membuat Fungsi</h2>
         <p>Query berikut digunakan untuk membuat fungsi yang menghitung total harga:</p>
@@ -134,6 +137,7 @@
                 SELECT dbo.fn_HitungTotalHarga(2001, 4);
             </code>
         </div>
+        <p><strong>Penjelasan:</strong> Fungsi <code>fn_HitungTotalHarga</code> dibuat untuk menghitung total harga berdasarkan ID barang dan jumlah yang diberikan sebagai parameter. Fungsi ini memudahkan dalam melakukan perhitungan yang berulang tanpa harus menulis ulang query yang sama.</p>
 
         <h2>Membuat Trigger</h2>
         <p>Query berikut digunakan untuk membuat trigger yang mengupdate status barang setelah ada pesanan:</p>
@@ -157,24 +161,29 @@
                 INSERT INTO pesanan VALUES('03-12-2024', 7, 71200000, 'diproses', 'dibayar', 'dikirim', 1001, 2001);<br>
                 INSERT INTO pesanan VALUES('04-12-2024', 3, 31200000, 'diproses', 'dibayar', 'dikirim', 1001, 2001);
             </code>
-<br>
-             <p>Kode mengkoneksikan ke sebuah server: disini contoh yang digunakan menggunakan php</p>
-                        <code>
-                <?php
+        </div>
+        <p><strong>Penjelasan:</strong> Trigger <code>tr_UpdateStatusBarang</code> dibuat untuk secara otomatis mengupdate stok dan status barang setelah ada pesanan baru yang dimasukkan. Trigger ini dijalankan setelah insert pada tabel <code>pesanan</code>, dan memastikan bahwa stok barang dikurangi sesuai dengan jumlah pesanan dan mengubah status barang menjadi 'tidak tersedia' jika stok habis.</p>
 
-    $host     = "NITRO";
-    $connInfo = array( "Database"=>"dbElektronik", "UID"=>"root", "PWD"=>"");
-    $conn     = sqlsrv_connect( $host, $connInfo);
-
-    if( $conn ) {
-       echo "Koneksi berhasil.<br />";
-    }else{
-       echo "Koneksi Gagal";
-       die( print_r( sqlsrv_errors(), true));
-    }
-?> 
+        <h2>Menghubungkan ke Database dengan PHP</h2>
+        <p>Kode berikut digunakan untuk menghubungkan ke sebuah server database menggunakan PHP:</p>
+        <div class="sql-code">
+            <code>
+                &lt;?php<br>
+                <br>
+                $host     = "NITRO";<br>
+                $connInfo = array( "Database"=>"dbElektronik", "UID"=>"root", "PWD"=>"");<br>
+                $conn     = sqlsrv_connect( $host, $connInfo);<br>
+                <br>
+                if( $conn ) {<br>
+                   echo "Koneksi berhasil.<br />";<br>
+                }else{<br>
+                   echo "Koneksi Gagal";<br>
+                   die( print_r( sqlsrv_errors(), true));<br>
+                }<br>
+                ?&gt;
             </code>
         </div>
+        <p><strong>Penjelasan:</strong> Kode PHP di atas digunakan untuk menghubungkan ke server database <code>NITRO</code> dengan menggunakan kredensial yang diberikan. Jika koneksi berhasil, akan menampilkan pesan "Koneksi berhasil". Jika gagal, akan menampilkan pesan kesalahan dan menghentikan eksekusi script.</p>
     </div>
 
     <footer>
