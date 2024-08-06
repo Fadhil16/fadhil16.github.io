@@ -157,6 +157,23 @@
                 INSERT INTO pesanan VALUES('03-12-2024', 7, 71200000, 'diproses', 'dibayar', 'dikirim', 1001, 2001);<br>
                 INSERT INTO pesanan VALUES('04-12-2024', 3, 31200000, 'diproses', 'dibayar', 'dikirim', 1001, 2001);
             </code>
+<br>
+             <p>Kode mengkoneksikan ke sebuah server: disini contoh yang digunakan menggunakan php</p>
+                        <code>
+                <?php
+
+    $host     = "NITRO";
+    $connInfo = array( "Database"=>"dbElektronik", "UID"=>"root", "PWD"=>"");
+    $conn     = sqlsrv_connect( $host, $connInfo);
+
+    if( $conn ) {
+       echo "Koneksi berhasil.<br />";
+    }else{
+       echo "Koneksi Gagal";
+       die( print_r( sqlsrv_errors(), true));
+    }
+?> 
+            </code>
         </div>
     </div>
 
