@@ -55,6 +55,10 @@
             padding: 10px;
             margin: 10px 0;
         }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -65,7 +69,31 @@
     </header>
 
     <div class="container main">
-        <h2>Query Dasar</h2>
+        <h2>Pengenalan SQL</h2>
+        <p>SQL (Structured Query Language) adalah bahasa pemrograman yang digunakan untuk mengelola dan memanipulasi basis data relasional. Dengan SQL, kita dapat melakukan berbagai operasi seperti menyimpan, mengubah, mengambil, dan menghapus data dalam basis data. SQL digunakan secara luas di banyak sistem manajemen basis data (DBMS) seperti MySQL, SQL Server, PostgreSQL, dan Oracle.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png">
+
+        <h2>Apa itu SQL Server?</h2>
+        <p>SQL Server adalah sistem manajemen basis data relasional (RDBMS) yang dikembangkan oleh Microsoft. SQL Server memungkinkan pengguna untuk menyimpan dan mengambil data sebagaimana diminta oleh aplikasi perangkat lunak lainnya, baik yang berjalan di komputer yang sama atau di komputer lain di jaringan (termasuk internet).</p>
+        <img src="https://logowik.com/content/uploads/images/microsoft-sql-server4529.jpg">
+        
+        <h2>Tipe Data di SQL</h2>
+        <p>SQL mendukung berbagai tipe data untuk menyimpan berbagai jenis informasi. Beberapa tipe data umum di SQL antara lain:</p>
+        <ul>
+            <li><strong>INT</strong>: Menyimpan angka bulat.</li>
+            <li><strong>VARCHAR</strong>: Menyimpan teks dengan panjang variabel.</li>
+            <li><strong>DATE</strong>: Menyimpan tanggal.</li>
+            <li><strong>FLOAT</strong>: Menyimpan angka desimal.</li>
+        </ul>
+
+        <h2>Entity Relationship Diagram (ERD)</h2>
+        <p>Diagram berikut menggambarkan hubungan antar tabel dalam basis data:</p>
+        <img src="https://dicoding-assets.sgp1.cdn.digitaloceanspaces.com/blog/wp-content/uploads/2021/08/ERD-1024x784.png">
+
+        <h2>Kesimpulan</h2>
+        <p>SQL adalah alat yang sangat kuat untuk mengelola dan memanipulasi data dalam basis data relasional. SQL Server sebagai salah satu RDBMS yang populer, menyediakan berbagai fitur yang mendukung operasi data yang efisien dan efektif. Memahami dasar-dasar syntax SQL adalah langkah pertama yang penting dalam menguasai pengelolaan basis data.</p>
+        
+        <h2>Contoh Query SQL</h2>
         <p>Query berikut digunakan untuk menampilkan semua barang berdasarkan kategori:</p>
         <div class="sql-code">
             <code>
@@ -84,7 +112,6 @@
                 INNER JOIN barang ON pesanan.id_barang = barang.id_barang;
             </code>
         </div>
-        <p><strong>Penjelasan:</strong> Query ini menggunakan <code>INNER JOIN</code> untuk menggabungkan data dari tabel <code>pelanggan</code> dan <code>barang</code> berdasarkan tabel <code>pesanan</code>. Ini memungkinkan kita untuk melihat detail lengkap dari setiap pesanan, termasuk informasi pelanggan dan barang yang dipesan, serta menghitung total harga dari pesanan tersebut.</p>
 
         <h2>Membuat View</h2>
         <p>Query berikut digunakan untuk membuat view laporan penjualan:</p>
@@ -97,7 +124,6 @@
                 INNER JOIN barang ON pesanan.id_barang = barang.id_barang;
             </code>
         </div>
-        <p><strong>Penjelasan:</strong> View <code>vwLaporanPenjualan</code> dibuat untuk menyimpan query yang kompleks agar lebih mudah diakses dan digunakan kembali. Dengan membuat view ini, kita dapat menampilkan data laporan penjualan dengan mudah menggunakan <code>SELECT * FROM vwLaporanPenjualan</code>.</p>
         <p>Untuk menampilkan data dari view:</p>
         <div class="sql-code">
             <code>
@@ -116,7 +142,6 @@
                 EXEC sp_TampilBarang @id_barang = 2001;
             </code>
         </div>
-        <p><strong>Penjelasan:</strong> Stored procedure <code>sp_TampilBarang</code> dibuat untuk menampilkan detail barang berdasarkan parameter <code>@id_barang</code>. Parameter ini memungkinkan kita untuk menyesuaikan query dengan ID barang yang berbeda setiap kali stored procedure dijalankan.</p>
 
         <h2>Membuat Fungsi</h2>
         <p>Query berikut digunakan untuk membuat fungsi yang menghitung total harga:</p>
@@ -137,7 +162,6 @@
                 SELECT dbo.fn_HitungTotalHarga(2001, 4);
             </code>
         </div>
-        <p><strong>Penjelasan:</strong> Fungsi <code>fn_HitungTotalHarga</code> dibuat untuk menghitung total harga berdasarkan ID barang dan jumlah yang diberikan sebagai parameter. Fungsi ini memudahkan dalam melakukan perhitungan yang berulang tanpa harus menulis ulang query yang sama.</p>
 
         <h2>Membuat Trigger</h2>
         <p>Query berikut digunakan untuk membuat trigger yang mengupdate status barang setelah ada pesanan:</p>
@@ -162,14 +186,12 @@
                 INSERT INTO pesanan VALUES('04-12-2024', 3, 31200000, 'diproses', 'dibayar', 'dikirim', 1001, 2001);
             </code>
         </div>
-        <p><strong>Penjelasan:</strong> Trigger <code>tr_UpdateStatusBarang</code> dibuat untuk secara otomatis mengupdate stok dan status barang setelah ada pesanan baru yang dimasukkan. Trigger ini dijalankan setelah insert pada tabel <code>pesanan</code>, dan memastikan bahwa stok barang dikurangi sesuai dengan jumlah pesanan dan mengubah status barang menjadi 'tidak tersedia' jika stok habis.</p>
-
-        <h2>Menghubungkan ke Database dengan PHP</h2>
-        <p>Kode berikut digunakan untuk menghubungkan ke sebuah server database menggunakan PHP:</p>
+        
+        <h2>Kode untuk Mengkoneksikan ke Server</h2>
+        <p>Berikut adalah contoh kode PHP untuk mengkoneksikan ke sebuah server SQL Server:</p>
         <div class="sql-code">
             <code>
                 &lt;?php<br>
-                <br>
                 $host     = "NITRO";<br>
                 $connInfo = array( "Database"=>"dbElektronik", "UID"=>"root", "PWD"=>"");<br>
                 $conn     = sqlsrv_connect( $host, $connInfo);<br>
@@ -183,7 +205,45 @@
                 ?&gt;
             </code>
         </div>
-        <p><strong>Penjelasan:</strong> Kode PHP di atas digunakan untuk menghubungkan ke server database <code>NITRO</code> dengan menggunakan kredensial yang diberikan. Jika koneksi berhasil, akan menampilkan pesan "Koneksi berhasil". Jika gagal, akan menampilkan pesan kesalahan dan menghentikan eksekusi script.</p>
+
+        <h2>Kode untuk Commit dan Rollback</h2>
+        <p>Commit adalah operasi yang menandakan bahwa semua perubahan yang dilakukan dalam transaksi saat ini harus disimpan permanen ke dalam database.</p>
+        <p>Rollback adalah operasi yang membatalkan semua perubahan yang dilakukan dalam transaksi saat ini, mengembalikan database ke keadaan sebelum transaksi dimulai.</p>
+        <div class="sql-code">
+            <code>
+                BEGIN TRANSACTION;
+
+-- Deklarasi variabel
+DECLARE @id_barang INT = 1; -- Ganti dengan id_barang yang sesuai
+DECLARE @jumlah INT = 1; -- Ganti dengan jumlah yang sesuai
+DECLARE @stok INT;
+
+-- Cek stok barang
+SELECT @stok = stok FROM barang WHERE id_barang = @id_barang;
+
+-- Jika stok lebih dari 0, lakukan insert dan commit
+IF @stok > 0
+BEGIN
+    -- Insert data ke tabel transaksi
+    INSERT INTO transaksi (id_barang, jumlah, tanggal)
+    VALUES (@id_barang, @jumlah, GETDATE());
+
+    -- Kurangi stok barang
+    UPDATE barang SET stok = stok - @jumlah WHERE id_barang = @id_barang;
+
+    -- Commit transaksi
+    COMMIT;
+    PRINT 'Transaksi berhasil';
+END
+ELSE
+BEGIN
+    -- Rollback transaksi jika stok 0
+    ROLLBACK;
+    PRINT 'Transaksi gagal: stok habis';
+END;
+            </code>
+        </div>
+
     </div>
 
     <footer>
