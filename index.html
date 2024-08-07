@@ -274,6 +274,34 @@ BACKUP DATABASE dbElektronik TO DISK = 'D:\LSP\Backup\dbElektronik.bak'
 -- Restore
 RESTORE DATABASE dbElektronik FROM DISK = 'D:\LSP\Backup\dbElektronik.bak'
 </code>
+
+        <code>-- Mulai transaksi
+BEGIN TRANSACTION;
+
+DECLARE @totalHarga DECIMAL(18, 2);
+DECLARE @totalJumlah INT;
+
+-- Hitung total harga dan total jumlah
+SELECT 
+    @totalHarga = SUM(harga * jumlah),
+    @totalJumlah = SUM(jumlah)
+FROM 
+    id_pemesanan;
+
+-- Kondisi untuk menentukan apakah commit atau rollback
+IF @totalHarga > 0 AND @totalJumlah > 0
+BEGIN
+    -- Lakukan commit jika kondisi terpenuhi
+    COMMIT TRANSACTION;
+    PRINT 'Transaction committed successfully. Total Harga: ' + CAST(@totalHarga AS VARCHAR(50)) + ', Total Jumlah: ' + CAST(@totalJumlah AS VARCHAR(50));
+END
+ELSE
+BEGIN
+    -- Lakukan rollback jika kondisi tidak terpenuhi
+    ROLLBACK TRANSACTION;
+    PRINT 'Transaction rolled back. Total Harga: ' + CAST(@totalHarga AS VARCHAR(50)) + ', Total Jumlah: ' + CAST(@totalJumlah AS VARCHAR(50));
+END;
+</code>
     </div>
 
     <footer>
