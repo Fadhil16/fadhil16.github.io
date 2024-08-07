@@ -243,7 +243,37 @@ BEGIN
 END;
             </code>
         </div>
+        <br>
+        <p>Hak akses</p>
+<code>
+    -- h
+CREATE LOGIN ManajerGudang
+WITH PASSWORD = '123',
+DEFAULT_DATABASE = dbElektronik
 
+use dbElektronik
+create user ManajerGudang for login ManajerGudang
+
+GRANT SELECT ON pelanggan TO ManajerGudang
+GRANT SELECT, INSERT, UPDATE, DELETE ON barang TO ManajerGudang
+
+-- i
+CREATE LOGIN Administrator
+WITH PASSWORD = '123',
+DEFAULT_DATABASE = dbElektronik
+
+use dbElektronik
+create user Administrator for login Administrator
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON barang TO Administrator
+GRANT SELECT, INSERT, UPDATE, DELETE ON pelanggan TO Administrator
+
+-- Backup
+BACKUP DATABASE dbElektronik TO DISK = 'D:\LSP\Backup\dbElektronik.bak'
+
+-- Restore
+RESTORE DATABASE dbElektronik FROM DISK = 'D:\LSP\Backup\dbElektronik.bak'
+</code>
     </div>
 
     <footer>
