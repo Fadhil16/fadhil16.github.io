@@ -1,313 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pembelajaran SQL</title>
+    <title>Blog Pembelajaran Cisco Packet Tracer</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
         }
         .container {
-            width: 80%;
+            max-width: 800px;
             margin: auto;
-            overflow: hidden;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #77d1f5 3px solid;
-        }
-        header a, footer a {
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
-        }
-        footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-        }
-        .main {
             padding: 20px;
             background: #fff;
-            margin-top: 20px;
-            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        pre {
+            background: #f4f4f4;
+            border-left: 5px solid #333;
+            margin: 20px 0;
+            padding: 15px;
+            overflow-x: auto;
         }
         code {
-            background: #eee;
-            padding: 2px 5px;
-            border-radius: 4px;
-            display: block;
-            margin: 10px 0;
-        }
-        .sql-code {
-            background: #f9f9f9;
-            border-left: 4px solid #77d1f5;
-            padding: 10px;
-            margin: 10px 0;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
+            font-family: "Courier New", Courier, monospace;
+            color: #c7254e;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Pembelajaran SQL</h1>
-        </div>
-    </header>
 
-    <div class="container main">
-        <h2>Pengenalan SQL</h2>
-        <p>SQL (Structured Query Language) adalah bahasa pemrograman yang digunakan untuk mengelola dan memanipulasi basis data relasional. Dengan SQL, kita dapat melakukan berbagai operasi seperti menyimpan, mengubah, mengambil, dan menghapus data dalam basis data. SQL digunakan secara luas di banyak sistem manajemen basis data (DBMS) seperti MySQL, SQL Server, PostgreSQL, dan Oracle.</p>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png">
+<div class="container">
+    <h1>Pembelajaran Cisco Packet Tracer</h1>
 
-        <h2>Apa itu SQL Server?</h2>
-        <p>SQL Server adalah sistem manajemen basis data relasional (RDBMS) yang dikembangkan oleh Microsoft. SQL Server memungkinkan pengguna untuk menyimpan dan mengambil data sebagaimana diminta oleh aplikasi perangkat lunak lainnya, baik yang berjalan di komputer yang sama atau di komputer lain di jaringan (termasuk internet).</p>
-        <img src="https://logowik.com/content/uploads/images/microsoft-sql-server4529.jpg">
-        
-        <h2>Tipe Data di SQL</h2>
-        <p>SQL mendukung berbagai tipe data untuk menyimpan berbagai jenis informasi. Beberapa tipe data umum di SQL antara lain:</p>
-        <ul>
-            <li><strong>INT</strong>: Menyimpan angka bulat.</li>
-            <li><strong>VARCHAR</strong>: Menyimpan teks dengan panjang variabel.</li>
-            <li><strong>DATE</strong>: Menyimpan tanggal.</li>
-            <li><strong>FLOAT</strong>: Menyimpan angka desimal.</li>
-        </ul>
+    <h2>Switch A Gedung A Lantai 1</h2>
+    <p>Di Gedung A Lantai 1, terdapat 2 network dalam 1 switch, sehingga diperlukan konfigurasi VLAN.</p>
+    
+    <h3>Setting VLAN untuk Ruang HRD</h3>
+    <pre><code>vlan 10
+name ruang_hrd
+int range fa0/2-5
+switchport mode access
+switchport access vlan 10
+ex</code></pre>
 
-        <h2>Entity Relationship Diagram (ERD)</h2>
-        <p>Diagram berikut menggambarkan hubungan antar tabel dalam basis data:</p>
-        <img src="https://dicoding-assets.sgp1.cdn.digitaloceanspaces.com/blog/wp-content/uploads/2021/08/ERD-1024x784.png">
+    <h3>Setting VLAN untuk Ruang Manajemen</h3>
+    <pre><code>vlan 20
+name ruang_manajemen
+int range fa0/6-13
+switchport mode access
+switchport access vlan 20
+ex</code></pre>
 
-        <h2>Kesimpulan</h2>
-        <p>SQL adalah alat yang sangat kuat untuk mengelola dan memanipulasi data dalam basis data relasional. SQL Server sebagai salah satu RDBMS yang populer, menyediakan berbagai fitur yang mendukung operasi data yang efisien dan efektif. Memahami dasar-dasar syntax SQL adalah langkah pertama yang penting dalam menguasai pengelolaan basis data.</p>
-        
-        <h2>Contoh Query SQL</h2>
-        <p>Query berikut digunakan untuk menampilkan semua barang berdasarkan kategori:</p>
-        <div class="sql-code">
-            <code>
-                SELECT * FROM barang WHERE kategori = 'elektronik';<br>
-                SELECT * FROM barang WHERE kategori = 'non elektronik';
-            </code>
-        </div>
+    <h3>Setting Trunk pada Port yang Terhubung ke Router</h3>
+    <pre><code>int fa0/1
+switchport mode trunk
+ex</code></pre>
 
-        <h2>Join dan Menghitung Total Harga</h2>
-        <p>Query berikut digunakan untuk menampilkan detail pesanan beserta total harga:</p>
-        <div class="sql-code">
-            <code>
-                SELECT pelanggan.id_pelanggan, pelanggan.nm_pelanggan, barang.id_barang, barang.nm_barang, barang.harga, pesanan.jml_pesanan, barang.harga * pesanan.jml_pesanan as Total_Harga<br>
-                FROM pesanan<br>
-                INNER JOIN pelanggan ON pesanan.id_pelanggan = pelanggan.id_pelanggan<br>
-                INNER JOIN barang ON pesanan.id_barang = barang.id_barang;
-            </code>
-        </div>
+    <h2>Setting Router 0 untuk Lantai 1 Gedung A</h2>
+    <pre><code>//config
+int fa0/0
+no sh
+int fa0/0.10
+encapsulation dot1q 10
+ip address 192.168.10.1 255.255.255.0
+ex
 
-        <h2>Membuat View</h2>
-        <p>Query berikut digunakan untuk membuat view laporan penjualan:</p>
-        <div class="sql-code">
-            <code>
-                CREATE VIEW vwLaporanPenjualan AS<br>
-                SELECT pelanggan.id_pelanggan, pelanggan.nm_pelanggan, barang.id_barang, barang.nm_barang, barang.harga, pesanan.jml_pesanan, barang.harga * pesanan.jml_pesanan as Total_Harga<br>
-                FROM pesanan<br>
-                INNER JOIN pelanggan ON pesanan.id_pelanggan = pelanggan.id_pelanggan<br>
-                INNER JOIN barang ON pesanan.id_barang = barang.id_barang;
-            </code>
-        </div>
-        <p>Untuk menampilkan data dari view:</p>
-        <div class="sql-code">
-            <code>
-                SELECT * FROM vwLaporanPenjualan;
-            </code>
-        </div>
+int fa0/0.20
+encapsulation dot1q 20
+ip address 192.168.20.1 255.255.255.0
+ex
 
-        <h2>Membuat Stored Procedure</h2>
-        <p>Query berikut digunakan untuk membuat stored procedure yang menampilkan detail barang berdasarkan ID:</p>
-        <div class="sql-code">
-            <code>
-                CREATE PROCEDURE sp_TampilBarang @id_barang INT AS<br>
-                SELECT nm_barang, harga, stok FROM barang<br>
-                WHERE id_barang = @id_barang;<br>
-                <br>
-                EXEC sp_TampilBarang @id_barang = 2001;
-            </code>
-        </div>
+service dhcp
+ip dhcp pool ruang_hrd
+network 192.168.10.0 255.255.255.0
+default-router 192.68.10.1
+ex
 
-        <h2>Membuat Fungsi</h2>
-        <p>Query berikut digunakan untuk membuat fungsi yang menghitung total harga:</p>
-        <div class="sql-code">
-            <code>
-                CREATE FUNCTION fn_HitungTotalHarga (@id_barang INT, @jumlah INT)<br>
-                RETURNS INT<br>
-                AS<br>
-                BEGIN<br>
-                    DECLARE @harga INT;<br>
-                    <br>
-                    SELECT @harga = harga FROM barang<br>
-                    WHERE id_barang = @id_barang;<br>
-                    <br>
-                    RETURN @harga * @jumlah;<br>
-                END;<br>
-                <br>
-                SELECT dbo.fn_HitungTotalHarga(2001, 4);
-            </code>
-        </div>
+service dhcp
+ip dhcp pool ruang_manajemen
+network 192.168.20.0 255.255.255.0
+default-router 192.168.20.1
+ex
 
-        <h2>Membuat Trigger</h2>
-        <p>Query berikut digunakan untuk membuat trigger yang mengupdate status barang setelah ada pesanan:</p>
-        <div class="sql-code">
-            <code>
-                CREATE TRIGGER tr_UpdateStatusBarang<br>
-                ON pesanan<br>
-                AFTER INSERT<br>
-                AS<br>
-                BEGIN<br>
-                    UPDATE barang<br>
-                    SET barang.stok = barang.stok - inserted.jml_pesanan<br>
-                    FROM barang<br>
-                    INNER JOIN inserted ON barang.id_barang = inserted.id_barang;<br>
-                    <br>
-                    UPDATE barang<br>
-                    SET barang.status = 'tidak tersedia'<br>
-                    WHERE barang.stok <= 0;<br>
-                END;<br>
-                <br>
-                INSERT INTO pesanan VALUES('03-12-2024', 7, 71200000, 'diproses', 'dibayar', 'dikirim', 1001, 2001);<br>
-                INSERT INTO pesanan VALUES('04-12-2024', 3, 31200000, 'diproses', 'dibayar', 'dikirim', 1001, 2001);
-            </code>
-        </div>
-        
-        <h2>Kode untuk Mengkoneksikan ke Server</h2>
-        <p>Berikut adalah contoh kode PHP untuk mengkoneksikan ke sebuah server SQL Server:</p>
-        <div class="sql-code">
-            <code>
-                &lt;?php<br>
-                $host     = "NITRO";<br>
-                $connInfo = array( "Database"=>"dbElektronik", "UID"=>"root", "PWD"=>"");<br>
-                $conn     = sqlsrv_connect( $host, $connInfo);<br>
-                <br>
-                if( $conn ) {<br>
-                   echo "Koneksi berhasil.<br />";<br>
-                }else{<br>
-                   echo "Koneksi Gagal";<br>
-                   die( print_r( sqlsrv_errors(), true));<br>
-                }<br>
-                ?&gt;
-            </code>
-        </div>
+int se2/0
+ip add 10.10.10.1 255.255.255.252
+no sh</code></pre>
 
-        <h2>Kode untuk Commit dan Rollback</h2>
-        <p>Commit adalah operasi yang menandakan bahwa semua perubahan yang dilakukan dalam transaksi saat ini harus disimpan permanen ke dalam database.</p>
-        <p>Rollback adalah operasi yang membatalkan semua perubahan yang dilakukan dalam transaksi saat ini, mengembalikan database ke keadaan sebelum transaksi dimulai.</p>
-        <div class="sql-code">
-            <code>
-                BEGIN TRANSACTION;
+    <h2>Gedung A Lantai 2</h2>
+    <p>Pada lantai 2 Gedung A, karena hanya terdapat satu ruangan, maka tidak digunakan VLAN.</p>
+    <pre><code>int fa0/0
+ip add 192.168.30.1 255.255.255.0
+no sh
+ex
 
--- Deklarasi variabel
-DECLARE @id_barang INT = 1; -- Ganti dengan id_barang yang sesuai
-DECLARE @jumlah INT = 1; -- Ganti dengan jumlah yang sesuai
-DECLARE @stok INT;
+service dhcp
+ip dhcp pool ruang_kreatif
+network 192.168.30.0 255.255.255.0
+default-router 192.168.30.1
+ex
 
--- Cek stok barang
-SELECT @stok = stok FROM barang WHERE id_barang = @id_barang;
+int se2/0
+ip add 20.20.20.2 255.255.255.252
+no sh</code></pre>
 
--- Jika stok lebih dari 0, lakukan insert dan commit
-IF @stok > 0
-BEGIN
-    -- Insert data ke tabel transaksi
-    INSERT INTO transaksi (id_barang, jumlah, tanggal)
-    VALUES (@id_barang, @jumlah, GETDATE());
+    <h2>Routing OSPF Antar Router Gedung A</h2>
+    <p>Konfigurasi OSPF untuk router di Gedung A.</p>
+    <pre><code>router 0
+router ospf 1
+network 192.168.10.0 0.0.0.255 area 0
+network 192.168.20.0 0.0.0.255 area 0
+network 10.10.10.0 0.0.0.3 area 0
 
-    -- Kurangi stok barang
-    UPDATE barang SET stok = stok - @jumlah WHERE id_barang = @id_barang;
+router 1
+router ospf 1
+network 192.168.30.0 0.0.0.255 area 0
+network 10.10.10.0 0.0.0.3 area 0</code></pre>
 
-    -- Commit transaksi
-    COMMIT;
-    PRINT 'Transaksi berhasil';
-END
-ELSE
-BEGIN
-    -- Rollback transaksi jika stok 0
-    ROLLBACK;
-    PRINT 'Transaksi gagal: stok habis';
-END;
-            </code>
-        </div>
-        <br>
-        <p>Hak akses</p>
-<code>
-    -- h
-CREATE LOGIN ManajerGudang
-WITH PASSWORD = '123',
-DEFAULT_DATABASE = dbElektronik
+    <h2>Gedung B Lantai 1</h2>
+    <p>Pada lantai 1 Gedung B, hanya terdapat satu network.</p>
+    <pre><code>Router 2
+int fa0/0
+ip address 192.168.50.1 255.255.255.0
+no sh
+ex
 
-use dbElektronik
-create user ManajerGudang for login ManajerGudang
+service dhcp
+ip dhcp pool ruang_produksi1
+network 192.168.50.0 255.255.255.0
+default-router 192.168.50.1
+ex
 
-GRANT SELECT ON pelanggan TO ManajerGudang
-GRANT SELECT, INSERT, UPDATE, DELETE ON barang TO ManajerGudang
+int se2/0
+ip add 20.20.20.1 255.255.255.252
+no sh</code></pre>
 
--- i
-CREATE LOGIN Administrator
-WITH PASSWORD = '123',
-DEFAULT_DATABASE = dbElektronik
+    <h2>Router 3</h2>
+    <pre><code>int fa0/0
+ip address 192.168.60.1 255.255.255.252
+no sh
 
-use dbElektronik
-create user Administrator for login Administrator
+service dhcp
+ip dhcp pool ruang_produksi2
+network 192.168.60.0 255.255.255.252
+default-router 192.168.60.1
+ex
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON barang TO Administrator
-GRANT SELECT, INSERT, UPDATE, DELETE ON pelanggan TO Administrator
+int se2/0
+ip add 20.20.20.2 255.255.255.252
+no sh</code></pre>
 
--- Backup
-BACKUP DATABASE dbElektronik TO DISK = 'D:\LSP\Backup\dbElektronik.bak'
+    <h2>Routing OSPF Antar Router Gedung B</h2>
+    <p>Konfigurasi OSPF untuk router di Gedung B.</p>
+    <pre><code>Router 2
+router ospf 1
+network 192.168.50.0 0.0.0.255 area 0
+network 20.20.20.0 0.0.0.3 area 0
 
--- Restore
-RESTORE DATABASE dbElektronik FROM DISK = 'D:\LSP\Backup\dbElektronik.bak'
-</code>
+Router 3
+router ospf 1
+network 192.168.60.0 0.0.0.255 area 0
+network 20.20.20.0 0.0.0.3 area 0</code></pre>
 
-        <code>-- Mulai transaksi
-BEGIN TRANSACTION;
+    <h2>Routing BGP</h2>
+    <p>Konfigurasi routing BGP antara Router 0 Gedung A dan Router 2 Gedung B.</p>
+    <pre><code>Router 0
+int se3/0
+ip add 30.30.30.1 255.255.255.252
+no sh
 
-DECLARE @totalHarga DECIMAL(18, 2);
-DECLARE @totalJumlah INT;
+Router 2
+int se3/0
+ip add 30.30.30.2 255.255.255.252
+no sh
 
--- Hitung total harga dan total jumlah
-SELECT 
-    @totalHarga = SUM(harga * jumlah),
-    @totalJumlah = SUM(jumlah)
-FROM 
-    id_pemesanan;
+Router 0
+router bgp 100
+neighbor 30.30.30.2 remote-as 200
+network 192.168.10.0 mask 255.255.255.0
+network 192.168.20.0 mask 255.255.255.0
+network 10.10.10.0 mask 255.255.255.252
 
--- Kondisi untuk menentukan apakah commit atau rollback
-IF @totalHarga > 0 AND @totalJumlah > 0
-BEGIN
-    -- Lakukan commit jika kondisi terpenuhi
-    COMMIT TRANSACTION;
-    PRINT 'Transaction committed successfully. Total Harga: ' + CAST(@totalHarga AS VARCHAR(50)) + ', Total Jumlah: ' + CAST(@totalJumlah AS VARCHAR(50));
-END
-ELSE
-BEGIN
-    -- Lakukan rollback jika kondisi tidak terpenuhi
-    ROLLBACK TRANSACTION;
-    PRINT 'Transaction rolled back. Total Harga: ' + CAST(@totalHarga AS VARCHAR(50)) + ', Total Jumlah: ' + CAST(@totalJumlah AS VARCHAR(50));
-END;
-</code>
-    </div>
+Router 2
+router bgp 200
+neighbor 30.30.30.1 remote-as 100
+network 192.168.50.0 mask 255.255.255.0
+network 30.30.30.0 mask 255.255.255.252</code></pre>
+</div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Pembelajaran SQL. All rights reserved.</p>
-        </div>
-    </footer>
 </body>
 </html>
